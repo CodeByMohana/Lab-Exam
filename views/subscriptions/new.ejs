@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create New Subscription</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <h2>Create a New Subscription</h2>
+    <form action="/subscriptions" method="POST" class="needs-validation" novalidate>
+      <div class="form-group mb-3">
+        <label for="plan" class="form-label">Plan</label>
+        <input type="text" name="subscription[plan]" id="plan" class="form-control" required>
+        <div class="invalid-feedback">
+          Please enter a valid plan name.
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label for="cost" class="form-label">Cost</label>
+        <input type="text" name="subscription[cost]" id="cost" class="form-control" required>
+        <div class="invalid-feedback">
+          Please enter the cost.
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label for="startDate" class="form-label">Start Date</label>
+        <input type="date" name="subscription[startDate]" id="startDate" class="form-control" required>
+        <div class="invalid-feedback">
+          Please provide a start date.
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label for="endDate" class="form-label">End Date</label>
+        <input type="date" name="subscription[endDate]" id="endDate" class="form-control">
+      </div>
+      <button type="submit" class="btn btn-primary">Create Subscription</button>
+    </form>
+  </div>
+
+  <script>
+    // Bootstrap validation script
+    (() => {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  </script>
+</body>
+</html>
